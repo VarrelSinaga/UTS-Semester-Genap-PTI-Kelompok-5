@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+* {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar {
+    width: 100%;
+    background-color: black;
+    overflow: auto;
+}
+
+.navbar a {
+    justify-content: space-between;
+    float: left;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    width: 15%;
+    text-align: center; 
+}
+
+/* mouse-hover */
+.navbar a:hover {
+    background-color: #000;
+}
+
+/* Style the current/active link */
+.navbar a.active {
+    background-color: #2ecc71 ;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 500px) {
+.navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; 
+    }
+}
+
+
+#logout-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 0 10px 0 20px;
+}
+
+#logout-button:hover {
+    background-color: rgb(0, 79, 32);
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px 0 15px;
+}
+
+.form-control label {
+    margin-bottom: 5px;
+}
+
+.form-control input, select {
+    padding: 5px;
+    border: 3px solid #000000;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #ad0000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-top: 25px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn:hover {
+    background-color: #4CAF50;
+}
+</style>
+     <!-- Navbar -->
+     <div class="navbar">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+            <h4>Hello</h4></a>
+        <a href="loginpage.html">Main</a>
+        <a class="active" href="income.html">Income</a>
+        <a href="outcome.html">Outcome</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="index2.html" class="text-white" id="logout-button">Log Out</a>
+    </div>
+    <center><h3>Your Income</h3></center>
+    <form id="form">
+        <div class="form-control">
+            <label for="text">Transaction Name</label>
+            <input type="text" id="text" placeholder="Enter name of transaction..." />
+        </div>
+        <div class="form-control">
+            <label for="amount">Transaction Nominal <br /></label>
+            <input type="number" id="nominal" placeholder="Enter nominal..." />
+        </div>
+        <div class="form-control">
+            <label for="type">Transaction Type <br /></label>
+            <select name="Transaction Type" id="type" required>
+                <option value="" disabled selected hidden>Select type...</option>
+                <option value="makan">Makan</option>
+                <option value="main">Main</option>
+                <option value="edukasi">Edukasi</option>
+                <option value="belanja">Belanja</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+        </div>
+        <button class="btn">Submit</button>
+        <script>
+            document.getElementById('form').addEventListener('submit', function(event) {
+              event.preventDefault();
+            
+              // Mengecek apakah semua formulir terisi
+              if (!document.getElementById('text').value || !document.getElementById('nominal').value || !document.getElementById('type').value) {
+                // Menampilkan notifikasi jika formulir belum lengkap
+                alert('Transaksi belum selesai, silakan lengkapi formulir!');
+              } else {
+                // Menampilkan notifikasi jika formulir terisi semua
+                if (confirm('Transaksi sukses!')) {
+                  // Mengosongkan formulir setelah berhasil disubmit
+                  document.getElementById('text').value = '';
+                  document.getElementById('nominal').value = '';
+                  document.getElementById('type').value = '';
+            
+                  // Menampilkan notifikasi jika pengguna telah mengklik tombol "OK"
+                  alert('Data telah berhasil disimpan.');
+            
+                  // Mengalihkan halaman ke halaman utama
+                  window.location.href = 'loginpage.html';
+                }
+              }
+            });
+            </script>
+    </form>
+</body>
+</html>
